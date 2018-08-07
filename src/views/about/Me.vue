@@ -1,11 +1,11 @@
 <template>
-    <div>789</div>
+    <div>我的简介</div>
 </template>
 
 <script>
-    export default {
-        name: "Task"
-    }
+  export default {
+    name: "Me"
+  }
 </script>
 
 <style scoped>

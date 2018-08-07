@@ -1,11 +1,11 @@
 <template>
     <el-container class="container">
         <el-header>
-            <header-bar :sysName="sysName" :sysUserName="sysUserName"></header-bar>
+            <header-bar :routes="permission_routers"></header-bar>
         </el-header>
         <el-container class="main">
             <el-aside>
-                <side-bar :routes="permission_routers"></side-bar>
+                <side-bar></side-bar>
             </el-aside>
             <el-container>
                 <el-main>
@@ -30,46 +30,45 @@
                 sysUserName: '测试',
             }
         },
-        components: {
-            SideBar,
-            HeaderBar,
-        },
         computed: {
             ...mapGetters([
                 'permission_routers',
             ]),
         },
+        components: {
+            SideBar,
+            HeaderBar,
+        },
     }
 </script>
 
 <style scoped lang="scss">
-    @import '../../styles/vars.scss';
-
+    @import "../../styles/vars.scss";
     .el-aside {
-        background-color: #D3DCE6;
-        color: #333;
-        text-align: center;
-        line-height: 200px;
-        flex: 0 0 200px;
-        width: 200px;
+        margin-top: 10px;
+        /*color: #333;*/
+        text-align: left;
+        line-height: 30px;
+        flex: 0 0 180px;
+        width: 180px;
     }
-
     .el-main {
         background-color: #ffff;
         color: #333;
         text-align: center;
     }
-
     .container {
         position: absolute;
         top: 0px;
         bottom: 0px;
         width: 100%;
         .el-header {
+            padding: 0 0px;
             height: 60px;
             line-height: 60px;
-            background: $color-primary;
+            background: #2c3e50;
             color:#fff;
+            width: 100%;
         }
         .main {
             display: flex;

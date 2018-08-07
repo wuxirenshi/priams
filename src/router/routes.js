@@ -1,41 +1,55 @@
-import Login from '../views/Login'
 import Home from '../views/home/Home'
+import Me from '../views/about/Me'
+import Share from '../views/share/Share'
+import Record from '../views/study/Record'
+import Editor from '../views/editor/Editor'
 import Dashboard from '../views/dashboard/Dashboard'
-import Task from '../views/mission/Task'
-import Report from '../views/mission/Report'
-import TaskTemplate from '../views/stencil/TaskTemplate'
-import ReportTemplate from '../views/stencil/ReportTemplate'
 import NotFound from '../views/404'
-import Group from '../views/manager/Group'
-import User from '../views/manager/user'
 
 export const constantRoutes = [
-    {
-        path: '/login',
-        component: Login,
-        name: '',
-        hidden: true
-    },
     {
         path: '/',
         component: Home,
         name: '',
-        iconCls: 'fa fa-tasks',
         leaf: true,
         children: [
-            {path: '/dashboard', component: Dashboard, name: '任务中心'},
+            {path: '/', component: Dashboard, name: '首页'},
         ]
     },
     {
         path: '/',
         component: Home,
-        name: '任务管理',
-        iconCls: 'fa fa-id-card-o',
+        name: '',
+        leaf: true,
         children: [
-            {path: '/task', component: Task, name: '测试任务'},
-            {path: '/report', component: Report, name: '测试报告'},
-            {path: '/task/template', component: TaskTemplate, name: '任务模版', hidden: true},
-            {path: '/report/template', component: ReportTemplate, name: '报告模版', hidden: true}
+            {path: '/about', component: Me, name: '关于我'},
+        ]
+    },
+    {
+        path: '/',
+        component: Home,
+        name: '',
+        leaf: true,
+        children: [
+            {path: '/share', component: Share, name: '技术分享'},
+        ]
+    },
+    {
+        path: '/',
+        component: Home,
+        name: '',
+        leaf: true,
+        children: [
+            {path: '/record', component: Record, name: '学习积累'},
+        ]
+    },
+    {
+        path: '/',
+        component: Home,
+        name: '',
+        leaf: true,
+        children: [
+            {path: '/editor', component: Editor, name: '发表文章'},
         ]
     },
     {
@@ -48,34 +62,5 @@ export const constantRoutes = [
         component: NotFound,
         name: '',
         hidden: true
-    },
-];
-
-export const permissionRoutes = [
-    {
-        path: '/',
-        component: Home,
-        name: '自动化测试',
-        iconCls: 'fa fa-connectdevelop',
-        children: [
-            {path: '/test', component: Task, name: '用例管理'},
-            {path: '/case', component: Report, name: '数据统计'},
-        ],
-        meta: {
-            roles: ['admin', 'ordinary']
-        }
-    },
-    {
-        path: '/',
-        component: Home,
-        name: '用户管理',
-        iconCls: 'fa fa-user',
-        children: [
-            {path: '/user', component: User, name: '用户信息'},
-            {path: '/group', component: Group, name: '小组信息'},
-        ],
-        meta: {
-            roles: ['admin']
-        }
     },
 ];

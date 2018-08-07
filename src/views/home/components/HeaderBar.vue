@@ -1,84 +1,51 @@
 <template>
-    <el-col :span="24" class="header">
-        <el-col :span="10" class="logo logo-width">{{ sysName }}</el-col>
-        <el-col :span="4" class="userinfo">
-            <el-dropdown trigger="hover">
-                <div class="avatar-wrapper">
-                    <div class="avatar">{{sysUserName ? sysUserName[0] : ''}}</div>
-                    <span class="username el-dropdown-link userinfo-inner">{{sysUserName}}</span>
-                </div>
-                <el-dropdown-menu slot="dropdown">
-                    <el-dropdown-item :disabled="true">我的消息</el-dropdown-item>
-                    <el-dropdown-item :disabled="true">设置</el-dropdown-item>
-                    <el-dropdown-item divided @click.native="logout">退出登录</el-dropdown-item>
-                </el-dropdown-menu>
-            </el-dropdown>
-        </el-col>
-    </el-col>
+    <div style="width: 100%">
+        <div class="logo-width">MOUMOU博客</div>
+        <div class="menu_bar">
+            <el-menu
+                background-color="#545c64"
+                text-color="#fff"
+                active-text-color="#ffd04b"
+                :default-active="$route.path"
+                mode="horizontal"
+                class="el-menu-vertical-demo"
+                router
+                unique-opened>
+                <template v-for="(item,index) in routes" v-if="!item.hidden">
+                    <el-submenu :index="index+''" v-if="!item.leaf&&item.children.length>0">
+                        <template slot="title">
+                            <i :class="item.iconCls"></i>
+                            <span>{{ item.name }}</span>
+                        </template>
+                        <el-menu-item :index="child.path" :key="child.path" v-for="child in item.children"
+                                      v-if="!child.hidden">
+                            <span slot="title">{{ child.name }}</span>
+                        </el-menu-item>
+                    </el-submenu>
+                    <el-menu-item :index="item.children[0].path" v-if="item.leaf&&item.children.length>0">
+                        <i :class="item.iconCls"></i>
+                        <span slot="title">{{ item.children[0].name }}</span>
+                    </el-menu-item>
+                </template>
+            </el-menu>
+        </div>
+    </div>
 </template>
 
 <script>
     export default {
         name: "HeaderBar",
         props: {
-            sysName: {
-                type: String
+            routes: {
+                type: Array
             },
-            sysUserName: {
-                type: String
-            }
         },
-        methods: {
-            logout: function () {
-                this.$confirm('确认退出吗?', '提示', {}).then(() => {
-                    this.$router.push('/login');
-                }).catch(() => {
-
-                });
-            },
-        }
     }
 </script>
 
 <style scoped lang="scss">
-    .avatar-wrapper {
-        padding-left: 8px;
-        padding-right: 8px;
-        height: 50px;
-        flex: none;
-        display: flex;
-        align-items: center;
-        cursor: pointer;
-    }
-
-    .avatar {
-        height: 36px;
-        width: 36px;
-        background-color: gray;
-        flex: 0 0 36px;
-        border-radius: 50px;
-        float: left;
-        text-align: center;
-        line-height: 36px;
-        color: #fff;
-        font-weight: bold;
-        font-size: 18px;
-    }
-
-    .username {
-        margin-left: 16px;
-        margin-right: 16px;
-        float: left;
-    }
-
-    .userinfo {
-        text-align: right;
-        padding-right: 35px;
-        float: right;
-        .userinfo-inner {
-            cursor: pointer;
-            color: #fff;
-        }
+    .header {
+        width: 100%;
     }
 
     .logo {
@@ -92,6 +59,11 @@
     }
 
     .logo-width{
-        width:180px;
+        width: 180px;
+        float: left;
+    }
+
+    .menu_bar {
+        overflow: hidden;
     }
 </style>

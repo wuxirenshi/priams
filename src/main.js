@@ -5,29 +5,18 @@ import App from './App'
 import {router} from './router'
 import store from './store'
 import ElementUI from 'element-ui';
+import  VueQuillEditor from 'vue-quill-editor'
 import 'element-ui/lib/theme-chalk/index.css';
 import 'font-awesome/css/font-awesome.min.css'
 import Icon from 'vue-svg-icon/Icon.vue';
+import 'quill/dist/quill.core.css';
+import 'quill/dist/quill.snow.css';
+import 'quill/dist/quill.bubble.css';
 
 Vue.use(ElementUI, {size: 'small'});
+Vue.use(VueQuillEditor);
 Vue.component('icon', Icon);
 Vue.config.productionTip = false;
-
-/* eslint-disable no-new */
-router.beforeEach((to, from, next) => {
-    if (to.path === '/') {
-        next('/login')
-    }
-    else {
-        store.dispatch('GetUserInfo').then(res => {
-            const roles = res.roles;
-            store.dispatch('GenerateRoutes', {roles}).then(() => {
-                router.addRoutes(store.getters.addRouters)
-            });
-        });
-        next()
-    }
-});
 
 new Vue({
     router,
