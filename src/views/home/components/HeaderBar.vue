@@ -1,46 +1,46 @@
 <template>
-    <div style="width: 100%">
-        <div class="logo-width">MOUMOU博客</div>
-        <div class="menu_bar">
-            <el-menu
-                background-color="#545c64"
-                text-color="#fff"
-                active-text-color="#ffd04b"
-                :default-active="$route.path"
-                mode="horizontal"
-                class="el-menu-vertical-demo"
-                router
-                unique-opened>
-                <template v-for="(item,index) in routes" v-if="!item.hidden">
-                    <el-submenu :index="index+''" v-if="!item.leaf&&item.children.length>0">
-                        <template slot="title">
-                            <i :class="item.iconCls"></i>
-                            <span>{{ item.name }}</span>
-                        </template>
-                        <el-menu-item :index="child.path" :key="child.path" v-for="child in item.children"
-                                      v-if="!child.hidden">
-                            <span slot="title">{{ child.name }}</span>
-                        </el-menu-item>
-                    </el-submenu>
-                    <el-menu-item :index="item.children[0].path" v-if="item.leaf&&item.children.length>0">
-                        <i :class="item.iconCls"></i>
-                        <span slot="title">{{ item.children[0].name }}</span>
-                    </el-menu-item>
-                </template>
-            </el-menu>
-        </div>
+  <div style="width: 100%">
+    <div class="logo-width">MOUMOU博客</div>
+    <div class="menu_bar">
+      <el-menu
+        background-color="#545c64"
+        text-color="#fff"
+        active-text-color="#ffd04b"
+        :default-active="$route.path"
+        mode="horizontal"
+        class="el-menu-vertical-demo"
+        router
+        unique-opened>
+        <template v-for="(item,index) in routes" v-if="!item.hidden">
+          <el-submenu :index="index+''" v-if="!item.leaf&&item.children.length>0">
+            <template slot="title">
+              <i :class="item.iconCls"></i>
+              <span>{{ item.name }}</span>
+            </template>
+            <el-menu-item :index="child.path" :key="child.path" v-for="child in item.children"
+                          v-if="!child.hidden">
+              <span slot="title">{{ child.name }}</span>
+            </el-menu-item>
+          </el-submenu>
+          <el-menu-item :index="item.children[0].path" v-if="item.leaf&&item.children.length>0">
+            <i :class="item.iconCls"></i>
+            <span slot="title">{{ item.children[0].name }}</span>
+          </el-menu-item>
+        </template>
+      </el-menu>
     </div>
+  </div>
 </template>
 
 <script>
-    export default {
-        name: "HeaderBar",
-        props: {
-            routes: {
-                type: Array
-            },
-        },
-    }
+  export default {
+    name: "HeaderBar",
+    props: {
+      routes: {
+        type: Array
+      },
+    },
+  }
 </script>
 
 <style scoped lang="scss">
