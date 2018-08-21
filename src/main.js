@@ -5,17 +5,18 @@ import App from './App'
 import {router} from './router'
 import store from './store'
 import ElementUI from 'element-ui';
-import VueQuillEditor from 'vue-quill-editor'
 import 'element-ui/lib/theme-chalk/index.css';
 import 'font-awesome/css/font-awesome.min.css'
 import Icon from 'vue-svg-icon/Icon.vue';
 import 'quill/dist/quill.core.css';
 import 'quill/dist/quill.snow.css';
 import 'quill/dist/quill.bubble.css';
+import mavonEditor from 'mavon-editor';
+import 'mavon-editor/dist/css/index.css'
 import axios from 'axios';
 
 Vue.use(ElementUI, {size: 'small'});
-Vue.use(VueQuillEditor);
+Vue.use(mavonEditor);
 Vue.component('icon', Icon);
 Vue.config.productionTip = false;
 

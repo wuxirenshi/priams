@@ -4,6 +4,7 @@ import Share from '../views/share/Share'
 import Record from '../views/study/Record'
 import Editor from '../views/editor/Editor'
 import Dashboard from '../views/dashboard/Dashboard'
+import Resume from '../views/resume/Resume'
 import NotFound from '../views/404'
 
 export const constantRoutes = [
@@ -51,6 +52,15 @@ export const constantRoutes = [
     role: 'admin',
     children: [
       {path: '/editor', component: Editor, name: '发表文章'},
+    ]
+  },
+  {
+    path: '/',
+    component: Home,
+    name: '',
+    leaf: true,
+    children: [
+      {path: '/resume', component: Resume, name: '简历'},
     ]
   },
   {

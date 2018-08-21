@@ -1,6 +1,6 @@
 <template>
   <div style="width: 100%">
-    <div class="logo-width">MOUMOU博客</div>
+    <div class="logo-width">徐晓东个人博客</div>
     <div class="menu_bar">
       <el-menu
         background-color="#545c64"

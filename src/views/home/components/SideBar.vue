@@ -4,10 +4,9 @@
       <div style="width: 100%;margin-left: -10px">
         <div style="text-align: center">博主信息</div>
         <div class="image_self"></div>
-        <div class="introduce">网名: XXXX</div>
-        <div class="introduce">职业: XXXX</div>
+        <div class="introduce">网名: 暂未想好</div>
+        <div class="introduce">职业: 测试开发</div>
         <div class="introduce">籍贯: 江苏无锡</div>
-        <div class="introduce">绰号: XXXX</div>
       </div>
     </el-card>
     <el-card class="box-card">
